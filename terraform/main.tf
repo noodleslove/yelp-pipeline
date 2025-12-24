@@ -13,6 +13,10 @@ provider "google" {
   zone    = var.zone
 }
 
+module "api" {
+  source = "./modules/api"
+}
+
 module "bigquery" {
   source = "./modules/bigquery"
 
