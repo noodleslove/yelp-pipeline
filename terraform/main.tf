@@ -17,6 +17,27 @@ module "api" {
   source = "./modules/api"
 }
 
+module "storage" {
+  source = "./modules/storage"
+
+  datalake_name                        = var.datalake_name
+  datalake_location                    = var.datalake_location
+  datalake_storage_class               = var.datalake_storage_class
+  datalake_uniform_bucket_level_access = var.datalake_uniform_bucket_level_access
+  datalake_public_access_prevention    = var.datalake_public_access_prevention
+  datalake_lifecycle_rule_action_type  = var.datalake_lifecycle_rule_action_type
+  datalake_lifecycle_rule_age          = var.datalake_lifecycle_rule_age
+  datalake_force_destroy               = var.datalake_force_destroy
+
+  ingest_business_data_script_filepath = var.ingest_business_data_script_filepath
+  ingest_checkin_data_script_filepath  = var.ingest_checkin_data_script_filepath
+  ingest_review_data_script_filepath   = var.ingest_review_data_script_filepath
+  ingest_tip_data_script_filepath      = var.ingest_tip_data_script_filepath
+  ingest_user_data_script_filepath     = var.ingest_user_data_script_filepath
+
+  depends_on = [module.api]
+}
+
 module "bigquery" {
   source = "./modules/bigquery"
 
