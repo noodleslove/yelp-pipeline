@@ -87,3 +87,39 @@ module "bigquery" {
   bigquery_tips_staging_table_deletion_protection = var.bigquery_tips_staging_table_deletion_protection
   bigquery_tips_staging_table_schema_filepath     = var.bigquery_tips_staging_table_schema_filepath
 }
+
+module "dataproc" {
+  source = "./modules/dataproc"
+
+  dataproc_staging_bucket_name                        = var.dataproc_staging_bucket_name
+  dataproc_staging_bucket_location                    = var.dataproc_staging_bucket_location
+  dataproc_staging_bucket_storage_class               = var.dataproc_staging_bucket_storage_class
+  dataproc_staging_bucket_uniform_bucket_level_access = var.dataproc_staging_bucket_uniform_bucket_level_access
+  dataproc_staging_bucket_public_access_prevention    = var.dataproc_staging_bucket_public_access_prevention
+  dataproc_staging_bucket_lifecycle_rule_action_type  = var.dataproc_staging_bucket_lifecycle_rule_action_type
+  dataproc_staging_bucket_lifecycle_rule_age          = var.dataproc_staging_bucket_lifecycle_rule_age
+  dataproc_staging_bucket_force_destroy               = var.dataproc_staging_bucket_force_destroy
+
+  dataproc_temp_bucket_name                        = var.dataproc_temp_bucket_name
+  dataproc_temp_bucket_location                    = var.dataproc_temp_bucket_location
+  dataproc_temp_bucket_storage_class               = var.dataproc_temp_bucket_storage_class
+  dataproc_temp_bucket_uniform_bucket_level_access = var.dataproc_temp_bucket_uniform_bucket_level_access
+  dataproc_temp_bucket_public_access_prevention    = var.dataproc_temp_bucket_public_access_prevention
+  dataproc_temp_bucket_lifecycle_rule_action_type  = var.dataproc_temp_bucket_lifecycle_rule_action_type
+  dataproc_temp_bucket_lifecycle_rule_age          = var.dataproc_temp_bucket_lifecycle_rule_age
+  dataproc_temp_bucket_force_destroy               = var.dataproc_temp_bucket_force_destroy
+
+  dataproc_cluster_name                                        = var.dataproc_cluster_name
+  dataproc_cluster_region                                      = var.dataproc_cluster_region
+  dataproc_cluster_graceful_decommission_timeout               = var.dataproc_cluster_graceful_decommission_timeout
+  dataproc_cluster_master_config_num_instances                 = var.dataproc_cluster_master_config_num_instances
+  dataproc_cluster_master_config_machine_type                  = var.dataproc_cluster_master_config_machine_type
+  dataproc_cluster_master_config_disk_config_boot_disk_type    = var.dataproc_cluster_master_config_disk_config_boot_disk_type
+  dataproc_cluster_master_config_disk_config_boot_disk_size_gb = var.dataproc_cluster_master_config_disk_config_boot_disk_size_gb
+  dataproc_cluster_worker_config_num_instances                 = var.dataproc_cluster_worker_config_num_instances
+  dataproc_cluster_worker_config_machine_type                  = var.dataproc_cluster_worker_config_machine_type
+  dataproc_cluster_worker_config_disk_config_boot_disk_type    = var.dataproc_cluster_worker_config_disk_config_boot_disk_type
+  dataproc_cluster_worker_config_disk_config_boot_disk_size_gb = var.dataproc_cluster_worker_config_disk_config_boot_disk_size_gb
+  dataproc_cluster_software_config_image_version               = var.dataproc_cluster_software_config_image_version
+  dataproc_cluster_software_config_allow_zero_workers          = var.dataproc_cluster_software_config_allow_zero_workers
+}
