@@ -144,11 +144,6 @@ variable "bigquery_business_staging_table_schema_filepath" {
   type        = string
 }
 
-variable "bigquery_staging_business_table_partition_column" {
-  description = "The column to partition the staging business table by."
-  type        = string
-}
-
 # BigQuery Check-in Staging Table
 variable "bigquery_checkin_staging_table_id" {
   description = "The name of the check-in staging table."
@@ -184,11 +179,6 @@ variable "bigquery_review_staging_table_description" {
 variable "bigquery_review_staging_table_deletion_protection" {
   description = "Whether to protect the review staging table from deletion."
   type        = bool
-}
-
-variable "bigquery_review_staging_table_partition_column" {
-  description = "The column to partition the review staging table by."
-  type        = string
 }
 
 variable "bigquery_review_staging_table_schema_filepath" {

@@ -136,11 +136,6 @@ variable "bigquery_review_staging_table_deletion_protection" {
   type        = bool
 }
 
-variable "bigquery_review_staging_table_partition_column" {
-  description = "The column to partition the review staging table by."
-  type        = string
-}
-
 variable "bigquery_review_staging_table_schema_filepath" {
   description = "The filepath to the review staging table schema."
   type        = string

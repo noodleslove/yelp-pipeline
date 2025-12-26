@@ -60,7 +60,7 @@ module "bigquery" {
   bigquery_business_staging_table_deletion_protection = var.bigquery_business_staging_table_deletion_protection
   bigquery_business_staging_table_partition_column    = var.bigquery_business_staging_table_partition_column
   bigquery_business_staging_table_schema_filepath     = var.bigquery_business_staging_table_schema_filepath
-  bigquery_staging_business_table_partition_column    = var.bigquery_staging_business_table_partition_column
+  bigquery_staging_business_table_partition_column    = var.bigquery_business_staging_table_partition_column
 
   # Check-in Staging Table
   bigquery_checkin_staging_table_id                  = var.bigquery_checkin_staging_table_id
@@ -72,7 +72,6 @@ module "bigquery" {
   bigquery_review_staging_table_id                  = var.bigquery_review_staging_table_id
   bigquery_review_staging_table_description         = var.bigquery_review_staging_table_description
   bigquery_review_staging_table_deletion_protection = var.bigquery_review_staging_table_deletion_protection
-  bigquery_review_staging_table_partition_column    = var.bigquery_review_staging_table_partition_column
   bigquery_review_staging_table_schema_filepath     = var.bigquery_review_staging_table_schema_filepath
 
   # User Staging Table
