@@ -54,6 +54,18 @@ models:
         description: whether the business is open
         data_type: boolean
 
+      - name: drive_thru
+        description: whether the business has a drive-thru
+        data_type: boolean
+
+      - name: take_out
+        description: whether the business has a take-out
+        data_type: boolean
+
+      - name: wheelchair_accessible
+        description: whether the business is wheelchair accessible
+        data_type: boolean
+
       - name: by_appointment_only
         description: whether the business is by appointment only
         data_type: boolean
@@ -82,6 +94,18 @@ models:
         description: the hours of the business on Thursday
         data_type: string
 
+      - name: hours__friday
+        description: the hours of the business on Friday
+        data_type: string
+
+      - name: hours__saturday
+        description: the hours of the business on Saturday
+        data_type: string
+
+      - name: hours__sunday
+        description: the hours of the business on Sunday
+        data_type: string
+
   - name: stg_checkin
     columns:
       - name: business_id
@@ -90,30 +114,14 @@ models:
         data_tests:
           - not_null
 
+      - name: index
+        description: the index of the checkin
+        data_type: integer
+        data_tests:
+          - not_null
+
       - name: date
         description: the date of the checkin
         data_type: timestamp
         data_tests:
           - not_null
-
-  # - name: stg_orders
-  #   columns:
-  #     - name: order_id
-  #       tests:
-  #         - unique
-  #         - not_null
-  #     - name: status
-  #       tests:
-  #         - accepted_values:
-  #             values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
-
-  # - name: stg_payments
-  #   columns:
-  #     - name: payment_id
-  #       tests:
-  #         - unique
-  #         - not_null
-  #     - name: payment_method
-  #       tests:
-  #         - accepted_values:
-  #             values: ['credit_card', 'coupon', 'bank_transfer', 'gift_card']
