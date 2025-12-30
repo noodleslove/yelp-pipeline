@@ -1,0 +1,15 @@
+dev:
+  outputs:
+    dev:
+      type: athena
+      s3_tmp_table_dir: s3://yelpopendataset-raw-useast1-dev/yelp.db/dbt_tmp/
+      s3_staging_dir: s3://yelpopendataset-raw-useast1-dev/yelp.db/dbt_staging/
+      s3_data_dir: s3://yelpopendataset-raw-useast1-dev/yelp.db/yelp_dbt/
+      region_name: us-east-1
+      database: awsdatacatalog
+      schema: yelp_dbt
+      threads: 4
+      num_retries: 3
+      aws_access_key_id: "{{ env_var('SOURCES__FILESYSTEM__CREDENTIALS__AWS_ACCESS_KEY_ID') }}"
+      aws_secret_access_key: "{{ env_var('SOURCES__FILESYSTEM__CREDENTIALS__AWS_SECRET_ACCESS_KEY') }}"
+  target: dev

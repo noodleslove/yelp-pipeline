@@ -1,0 +1,119 @@
+version: 2
+
+models:
+  - name: stg_business
+    description: the business model
+
+    columns:
+      - name: business_id
+        description: 22 character unique string business id
+        data_type: string
+        data_tests:
+          - unique
+          - not_null
+
+      - name: name
+        description: the business's name
+        data_type: string
+        data_tests:
+          - not_null
+
+      - name: address
+        description: the full address of the business
+        data_type: string
+
+      - name: city
+        description: the city of the business
+        data_type: string
+
+      - name: state
+        description: 2 character state code, if applicable
+        data_type: string
+
+      - name: postal_code
+        description: the postal code of the business, if applicable
+        data_type: string
+
+      - name: latitude
+        description: the latitude of the business
+        data_type: double
+
+      - name: longitude
+        description: the longitude of the business
+        data_type: double
+
+      - name: stars
+        description: star rating, rounded to half-stars
+        data_type: double
+
+      - name: review_count
+        description: number of reviews
+        data_type: integer
+
+      - name: is_open
+        description: whether the business is open
+        data_type: boolean
+
+      - name: by_appointment_only
+        description: whether the business is by appointment only
+        data_type: boolean
+
+      - name: business_accepts_credit_cards
+        description: whether the business accepts credit cards
+        data_type: boolean
+
+      - name: categories
+        description: list of categories the business belongs to, separated by commas
+        data_type: string
+
+      - name: hours__monday
+        description: the hours of the business on Monday
+        data_type: string
+
+      - name: hours__tuesday
+        description: the hours of the business on Tuesday
+        data_type: string
+
+      - name: hours__wednesday
+        description: the hours of the business on Wednesday
+        data_type: string
+
+      - name: hours__thursday
+        description: the hours of the business on Thursday
+        data_type: string
+
+  - name: stg_checkin
+    columns:
+      - name: business_id
+        description: the business id
+        data_type: string
+        data_tests:
+          - not_null
+
+      - name: date
+        description: the date of the checkin
+        data_type: timestamp
+        data_tests:
+          - not_null
+
+  # - name: stg_orders
+  #   columns:
+  #     - name: order_id
+  #       tests:
+  #         - unique
+  #         - not_null
+  #     - name: status
+  #       tests:
+  #         - accepted_values:
+  #             values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+
+  # - name: stg_payments
+  #   columns:
+  #     - name: payment_id
+  #       tests:
+  #         - unique
+  #         - not_null
+  #     - name: payment_method
+  #       tests:
+  #         - accepted_values:
+  #             values: ['credit_card', 'coupon', 'bank_transfer', 'gift_card']

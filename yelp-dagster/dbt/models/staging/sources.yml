@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: yelp_dlt
+
+    config:
+      meta:
+        dagster:
+          group: transformation
+
+    tables:
+      - name: business
+        description: raw business data
+
+      - name: checkin
+        description: raw checkin data
+
+      - name: checkin__date
+        description: raw checkin date data
+
+      - name: review
+        description: raw review data
+
+      - name: user
+        description: raw user data
+
+      - name: tip
+        description: raw tip data
