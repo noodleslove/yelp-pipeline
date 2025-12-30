@@ -1,0 +1,47 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: yelp_dlt
+
+    config:
+      meta:
+        dagster:
+          group: transformation
+
+    tables:
+      - name: business
+        description: raw business data
+        meta:
+          dagster:
+            asset_key: ["dlt_yelp_open_dataset_business"]
+
+      - name: checkin
+        description: raw checkin data
+        meta:
+          dagster:
+            asset_key: ["dlt_yelp_open_dataset_checkin"]
+
+      - name: checkin__date
+        description: raw checkin date data
+        meta:
+          dagster:
+            asset_key: ["dlt_yelp_open_dataset_checkin__checkin_date"]
+
+      - name: review
+        description: raw review data
+        meta:
+          dagster:
+            asset_key: ["dlt_yelp_open_dataset_review"]
+
+      - name: user
+        description: raw user data
+        meta:
+          dagster:
+            asset_key: ["dlt_yelp_open_dataset_user"]
+
+      - name: tip
+        description: raw tip data
+        meta:
+          dagster:
+            asset_key: ["dlt_yelp_open_dataset_tip"]

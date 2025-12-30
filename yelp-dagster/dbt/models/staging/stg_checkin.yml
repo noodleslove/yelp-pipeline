@@ -1,0 +1,20 @@
+models:
+  - name: stg_checkin
+    columns:
+      - name: business_id
+        description: the business id
+        data_type: string
+        data_tests:
+          - not_null
+
+      - name: index
+        description: the index of the checkin
+        data_type: integer
+        data_tests:
+          - not_null
+
+      - name: date
+        description: the date of the checkin
+        data_type: timestamp
+        data_tests:
+          - not_null

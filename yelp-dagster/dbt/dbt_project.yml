@@ -23,10 +23,10 @@ models:
   +meta:
     dagster:
       group: transformation
+  +materialized: table
   yelp:
-    materialized: table
     staging:
-      materialized: view
+      +materialized: view
 
 seeds:
   +meta:

@@ -1,0 +1,113 @@
+models:
+  - name: user
+    description: User overview data mart, offering key details for each unique user. One row per user.
+
+    columns:
+      - name: user_id
+        description: Then unique key of the reviews mart.
+        data_type: string
+        data_tests:
+          - not_null
+          - unique
+
+      - name: name
+        description: The name of the user.
+        data_type: string
+
+      - name: count_lifetime_reviews
+        description: The total number of reviews the user has written.
+        data_type: integer
+
+      - name: first_review_at
+        description: The date of the user's first review.
+        data_type: date
+
+      - name: last_review_at
+        description: The date of the user's last review.
+        data_type: date
+
+      - name: lifetime_review_stars
+        description: The total number of stars the user has given.
+        data_type: integer
+
+      - name: lifetime_useful_votes
+        description: The total number of useful votes the user has received.
+        data_type: integer
+
+      - name: lifetime_funny_votes
+        description: The total number of funny votes the user has received.
+        data_type: integer
+
+      - name: lifetime_cool_votes
+        description: The total number of cool votes the user has received.
+        data_type: integer
+
+      - name: user_type
+        description: The type of user based on the number of reviews they have written.
+        data_type: string
+        data_tests:
+          - accepted_values:
+              values: ["new", "returning"]
+
+semantic_models:
+  - name: user
+    model: ref('user')
+    description: User grain mart.
+    defaults:
+      agg_time_dimension: first_review_at
+
+    entities:
+      - name: user
+        expr: user_id
+        type: primary
+
+    dimensions:
+      - name: user_name
+        type: categorical
+
+      - name: user_type
+        type: categorical
+
+      - name: first_review_at
+        type: time
+        type_params:
+          time_granularity: day
+
+    measures:
+      - name: count_users
+        description: The count of unique users.
+        agg: count_distinct
+        expr: user_id
+
+      - name: count_lifetime_reviews
+        description: The total count of reviews per user.
+        agg: sum
+
+      - name: lifetime_review_stars
+        description: The total number of stars the user has given.
+        agg: sum
+
+metrics:
+  - name: count_lifetime_reviews
+    description: The total number of reviews the user has written.
+    label: Count Lifetime Reviews
+    type: simple
+    type_params:
+      measure: count_lifetime_reviews
+
+  - name: lifetime_review_stars
+    description: The total number of stars the user has given.
+    label: Lifetime Review Stars
+    type: simple
+    type_params:
+      measure: lifetime_review_stars
+
+  - name: average_review_stars
+    description: The average number of stars the user has given.
+    label: Average Review Stars
+    type: derived
+    type_params:
+      metrics:
+        - count_lifetime_reviews
+        - lifetime_review_stars
+      expr: lifetime_review_stars / count_lifetime_reviews
