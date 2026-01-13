@@ -12,10 +12,10 @@ datalake_lifecycle_rule_age          = 30
 datalake_force_destroy               = true
 
 ingest_business_data_script_filepath = "../spark_jobs/ingest_business_data.py"
-ingest_checkin_data_script_filepath = "../spark_jobs/ingest_checkin_data.py"
-ingest_review_data_script_filepath = "../spark_jobs/ingest_review_data.py"
-ingest_tip_data_script_filepath = "../spark_jobs/ingest_tip_data.py"
-ingest_user_data_script_filepath = "../spark_jobs/ingest_user_data.py"
+ingest_checkin_data_script_filepath  = "../spark_jobs/ingest_checkin_data.py"
+ingest_review_data_script_filepath   = "../spark_jobs/ingest_review_data.py"
+ingest_tip_data_script_filepath      = "../spark_jobs/ingest_tip_data.py"
+ingest_user_data_script_filepath     = "../spark_jobs/ingest_user_data.py"
 
 # BigQuery Variables
 bigquery_staging_dataset_id                         = "yelp_staging"
@@ -86,3 +86,8 @@ dataproc_cluster_worker_config_disk_config_boot_disk_type    = "pd-standard"
 dataproc_cluster_worker_config_disk_config_boot_disk_size_gb = 30
 dataproc_cluster_software_config_image_version               = "2.1.4-ubuntu20"
 dataproc_cluster_software_config_allow_zero_workers          = "true"
+
+# Composer Variables
+composer_environment_name          = "yelp-composer-uswest1"
+composer_environment_region        = "us-west1"
+composer_environment_image_version = "composer-3-airflow-3.1.0-build.6"

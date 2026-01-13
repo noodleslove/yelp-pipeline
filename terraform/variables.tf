@@ -347,3 +347,19 @@ variable "dataproc_cluster_software_config_image_version" {
 variable "dataproc_cluster_software_config_allow_zero_workers" {
   type = string
 }
+
+# ======================================================
+# Composer Modules
+# ======================================================
+
+variable "composer_environment_name" {
+  type = string
+}
+
+variable "composer_environment_region" {
+  type = string
+}
+
+variable "composer_environment_image_version" {
+  type = string
+}

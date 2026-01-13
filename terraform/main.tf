@@ -122,3 +122,15 @@ module "dataproc" {
   dataproc_cluster_software_config_image_version               = var.dataproc_cluster_software_config_image_version
   dataproc_cluster_software_config_allow_zero_workers          = var.dataproc_cluster_software_config_allow_zero_workers
 }
+
+module "composer" {
+  source = "./modules/composer"
+
+  project = var.project
+
+  composer_environment_name          = var.composer_environment_name
+  composer_environment_region        = var.composer_environment_region
+  composer_environment_image_version = var.composer_environment_image_version
+
+  depends_on = [module.api]
+}
